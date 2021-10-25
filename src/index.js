@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import imgCarrot from 'https://media.giphy.com/media/02P36zcZT7NOufHIMo/giphy.gif';
 
 // class Square extends React.Component {
 //   render() {
@@ -13,6 +14,13 @@ import reportWebVitals from './reportWebVitals';
 //     );
 //   }
 // }
+var style={
+  backgroundImage: "url(" + "https://media.giphy.com/media/02P36zcZT7NOufHIMo/giphy.gif" + ")",
+  width: "10%",
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+}
 function Square(props){
   return (
     <button className="square" onClick={props.onClick}>
@@ -30,6 +38,7 @@ class Board extends React.Component {
   render() {
     return (
       <div>
+        
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -107,8 +116,10 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squares}
-          onClick={(i)=>this.handleClick(i)}/>
+          <section style={ style }>
+            <Board squares={current.squares}
+            onClick={(i)=>this.handleClick(i)}/>
+          </section>
         </div>
         <div className="game-info">
           
