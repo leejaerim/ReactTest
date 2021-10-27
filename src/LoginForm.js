@@ -6,40 +6,24 @@ const headers = { withCredentials: true };
 
 class LoginForm extends Component {
   state = {};
-  join = () => {
-    const send_param = {
-      headers,
-      email: this.joinEmail.value,
-      password: this.joinPw.value
-    };
-    axios
-      .post("http://localhost:8080/member/insert", send_param)
-      //정상 수행
-      .then(returnData => {
-        if (returnData.data.message) {
-          this.setState({
-            name: returnData.data.name
-          });
-        } else {
-          alert("회원가입 실패");
-        }
-      })
-      //에러
-      .catch(err => {
-        console.log(err);
-      });
-  };
   login = () => {
-    alert(this.password.value);
+    debugger;
+    if(this.password.value =="1234" && this.email.value =="ljr6608"){
+      this.props.history.push("/game")
+      //alert("Right Answer");
+    }else{
+      alert("Wrong Answer");
+    }
   };
   render() {
     return (
       <Form>
+        <h1>로그인</h1>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
-            ref={ref => (this.joinEmail = ref)}
+            ref={ref => (this.email = ref)}
             placeholder="Enter email"
           />
           <Form.Text className="text-muted">
@@ -58,27 +42,6 @@ class LoginForm extends Component {
           </Button>
         </Form.Group>
         <br></br>
-        <br></br>
-        <Form.Group controlId="joinForm">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            ref={ref => (this.email = ref)}
-            placeholder="Enter email"
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            ref={ref => (this.joinPw = ref)}
-            placeholder="Password"
-          />
-          <Button onClick={this.join} variant="primary" type="button">
-            회원가입
-          </Button>
-        </Form.Group>
       </Form>
     );
   }

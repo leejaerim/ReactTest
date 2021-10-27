@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import { Route } from 'react-router-dom';
+import LoginForm from './LoginForm';
+import JoinForm from './JoinForm';
+import Footer from './footer';
+import Game from './game';
+import { Link } from "react-router-dom";
+import Header from './header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>1212src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Route path="/" exact={true} component={Header} />
+                <Route path="/login" component={LoginForm} />
+                <Route path="/join" component={JoinForm} />
+                <Route path="/game" component={Game} />
+                <button><Link to= '/' className="links">Home</Link></button>
+                <button><Link to= '/Login' className="links">로그인</Link></button>
+                <button><Link to= '/Join' className="links">회원가입</Link></button>
+            </div>
+        );   
+    }
 }
 
 export default App;
