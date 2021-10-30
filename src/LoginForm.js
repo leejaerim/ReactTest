@@ -2,15 +2,25 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'csrftoken';
 const headers = { withCredentials: true };
 
 class LoginForm extends Component {
   state = {};
   login = () => {
-    debugger;
-    if(this.password.value =="1234" && this.email.value =="ljr6608"){
-      this.props.history.push("/game")
-      //alert("Right Answer");
+    const send_param = {
+      uid: this.email.value,
+      password: this.password.value
+    };
+    if(this.password.value != null && this.email.value  != null ){
+      axios.post('http://localhost:8000/app/login/',send_param)
+        .then((Response)=>{
+          if(Response.data == 1){
+            this.props.history.push("/game")
+          }
+          })
+        .catch((Error)=>{console.log(Error)})
     }else{
       alert("Wrong Answer");
     }

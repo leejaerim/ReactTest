@@ -3,24 +3,35 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'csrftoken';
+
 const headers = { withCredentials: true };
 
 class JoinForm extends Component {
   state = {};
   join = () => {
+    let axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+      }
+    };
     const send_param = {
-      headers,
-      email: this.joinEmail.value,
+      uid: this.joinEmail.value,
       password: this.joinPw.value
     };
     axios
-      .post("http://localhost:8080/member/insert", send_param)
+      .post("http://localhost:8000/app/signup/", {
+      uid : this.joinEmail.value,
+      password : this.joinPw.value
+    })
       //정상 수행
       .then(returnData => {
-        if (returnData.data.message) {
-          this.setState({
-            name: returnData.data.name
-          });
+        debugger;
+        if (returnData.status == 201 || returnData.status ==200) {
+          alert("회원가입 성공");
+          this.props.history.push("/game")
+
         } else {
           alert("회원가입 실패");
         }
