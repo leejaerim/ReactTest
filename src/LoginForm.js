@@ -4,7 +4,6 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
-const headers = { withCredentials: true };
 
 class LoginForm extends Component {
   state = {};
@@ -16,7 +15,7 @@ class LoginForm extends Component {
     if(this.password.value != null && this.email.value  != null ){
       axios.post('http://localhost:8000/app/login/',send_param)
         .then((Response)=>{
-          if(Response.data == 1){
+          if(Response.data.status === 'Success'){
             this.props.history.push("/game")
           }
           })

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import JoinForm from './JoinForm';
-import Footer from './footer';
 import Game from './game';
 import { Link } from "react-router-dom";
 import Header from './header';

@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 var style={
@@ -28,7 +26,6 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -59,6 +56,10 @@ class Game extends React.Component {
       stepNumber : 0,
     };
   }
+  logout = () => {
+    console.log('we have to logout!');
+    this.props.history.push("/");
+  };
   jumpTo(step){
     this.setState({
         stepNumber : step,
@@ -106,6 +107,9 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
+            <button onClick={this.logout} variant="primary" type="button">
+                로그아웃
+            </button>
           <section style={ style }>
             <Board squares={current.squares}
             onClick={(i)=>this.handleClick(i)}/>
