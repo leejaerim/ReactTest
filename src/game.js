@@ -1,6 +1,10 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import axios from "axios";
+axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'csrftoken';
 
 var style={
   backgroundImage: "url(" + "https://media.giphy.com/media/02P36zcZT7NOufHIMo/giphy.gif" + ")",
@@ -57,8 +61,22 @@ class Game extends React.Component {
     };
   }
   logout = () => {
-    console.log('we have to logout!');
-    this.props.history.push("/");
+      axios.post("http://localhost:8000/app/logout/", {
+      })//정상 수행
+      .then(Response => {
+        if (Response.status === 201 || Response.status === 200){
+          if(Response.data.status === 'Success') {
+            //alert("회원가입 성공");
+            this.props.history.push("/")
+          }
+        } else {
+          alert("로그아웃 실패");
+        }
+      })
+      //에러
+      .catch(err => {
+        console.log(err);
+      });
   };
   jumpTo(step){
     this.setState({

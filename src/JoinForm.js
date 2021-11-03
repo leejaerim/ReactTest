@@ -9,6 +9,9 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 
 class JoinForm extends Component {
   state = {};
+  home = () => {
+    this.props.history.push("/")
+  }
   join = () => {
     // // let axiosConfig = {
     //   headers: {
@@ -19,17 +22,25 @@ class JoinForm extends Component {
     //   uid: this.joinEmail.value,
     //   password: this.joinPw.value
     // };
-    axios
-      .post("http://localhost:8000/app/signup/", {
-      uid : this.joinEmail.value,
-      password : this.joinPw.value
-    })
+    if(this.joinEmail.value==""||this.joinPw.value==""){
+      alert("정보를 정확히 입력해주세요.");
+    }else if(this.joinPw.value != this.joinrePw.value){
+      alert("비밀번호가 다릅니다.");
+      this.joinPw.value = "";
+      this.joinrePw.value = "";
+    }else{
+      axios.post("http://localhost:8000/app/signup/", {
+        uid : this.joinEmail.value,
+        password : this.joinPw.value
+      })
       //정상 수행
       .then(Response => {
         if (Response.status === 201 || Response.status === 200){
           if(Response.data.status === 'Success') {
             alert("회원가입 성공");
-            this.props.history.push("/game")
+            this.props.history.push("/login")
+          }else{
+            alert(Response.data.Error)
           }
         } else {
           alert("회원가입 실패");
@@ -39,6 +50,7 @@ class JoinForm extends Component {
       .catch(err => {
         console.log(err);
       });
+    }
   };
   render() {
     return (
@@ -61,8 +73,17 @@ class JoinForm extends Component {
             ref={ref => (this.joinPw = ref)}
             placeholder="Password"
           />
+          <Form.Label>re-Password</Form.Label>
+          <Form.Control
+            type="password"
+            ref={ref => (this.joinrePw = ref)}
+            placeholder="re-Password"
+          />
           <Button onClick={this.join} variant="primary" type="button">
             회원가입
+          </Button>
+          <Button onClick={this.home} variant="primary" type="button">
+            홈으로
           </Button>
         </Form.Group>
       </Form>

@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
 
 class LoginForm extends Component {
   state = {};
+  home = () => {
+    this.props.history.push("/")
+  }
   login = () => {
     const send_param = {
       uid: this.email.value,
@@ -16,7 +20,9 @@ class LoginForm extends Component {
       axios.post('http://localhost:8000/app/login/',send_param)
         .then((Response)=>{
           if(Response.data.status === 'Success'){
-            this.props.history.push("/game")
+            this.props.history.push("/game");
+          }else if(Response.data.Error!=null){
+            alert(Response.data.Error);      
           }
           })
         .catch((Error)=>{console.log(Error)})
@@ -24,7 +30,7 @@ class LoginForm extends Component {
       alert("Wrong Answer");
     }
   };
-  render() {
+  render() { 
     return (
       <Form>
         <h1>로그인</h1>
@@ -48,6 +54,9 @@ class LoginForm extends Component {
           />
           <Button onClick={this.login} variant="primary" type="button">
             로그인
+          </Button>
+          <Button onClick={this.home} variant="primary" type="button">
+            홈으로
           </Button>
         </Form.Group>
         <br></br>

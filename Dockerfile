@@ -13,6 +13,5 @@ RUN npm install
 RUN npm install react-scripts@3.0.1 -g
 RUN npm install git
 RUN npm install axios
-
 # 앱 실행
 CMD ["npm", "start"]
