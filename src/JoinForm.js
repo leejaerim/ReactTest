@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -13,15 +14,6 @@ class JoinForm extends Component {
     this.props.history.push("/")
   }
   join = () => {
-    // // let axiosConfig = {
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=UTF-8',
-    //   }
-    // };
-    // const send_param = {
-    //   uid: this.joinEmail.value,
-    //   password: this.joinPw.value
-    // };
     if(this.joinEmail.value==""||this.joinPw.value==""){
       alert("정보를 정확히 입력해주세요.");
     }else if(this.joinPw.value != this.joinrePw.value){
@@ -53,6 +45,9 @@ class JoinForm extends Component {
     }
   };
   render() {
+    if (sessionStorage.getItem("uid") != null) {
+      return <Redirect to="/" />;
+    }
     return (
       <Form>
         <br></br>
