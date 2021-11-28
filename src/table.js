@@ -1,0 +1,71 @@
+import React, { Component } from 'react';
+import {Table} from "react-bootstrap";
+
+class Table2 extends Component{
+    render(){
+        const products = [
+
+            { id: 0, name: 'good', price: 1000 },
+            { id: 1, name: 'soso', price: 1500 },
+            { id: 2, name: 'bad', price: 500 },
+            { id: 3, name: 'good3', price: 41000 },
+            { id: 4, name: 'soso4', price: 800 }
+
+        ];
+        const columns = [
+            {
+                dataField: 'id',
+                text: 'Product ID',
+                sort: true
+            },{
+                dataField: 'name',
+                text: 'Product Name',
+                sort: true  
+            },{
+                dataField: 'price',
+                text: 'Product Price',
+                sort: true  
+            }
+        ]; 
+
+        const defaultSorted = [{
+            dataField: 'name',
+            order: 'desc'
+          }];
+          
+        return(
+            <div>
+                <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td colSpan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</Table>
+            </div>
+        );
+    }
+}
+export default Table2;

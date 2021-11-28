@@ -20,7 +20,6 @@ class LoginForm extends Component {
       axios
         .post("http://localhost:8000/app/login/", send_param)
         .then((Response) => {
-          debugger;
           if (Response.data.status === "Success") {
             sessionStorage.setItem("uid", this.email.value);
             this.props.history.push("/game");
@@ -29,7 +28,6 @@ class LoginForm extends Component {
           }
         })
         .catch((Error) => {
-          debugger;
           console.log(Error);
         });
     } else {

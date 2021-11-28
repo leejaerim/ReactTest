@@ -3,6 +3,10 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import Table2 from "./table.js";
+import Carousel2 from "./Carousel.js";
+import Navigation from './navi';
+
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -67,24 +71,6 @@ class Game extends React.Component {
       stepNumber: 0,
     };
   }
-  logout = () => {
-    axios
-      .post("http://localhost:8000/app/logout/", {}) //정상 수행
-      .then((Response) => {
-        if (Response.status === 201 || Response.status === 200) {
-          if (Response.data.status === "Success") {
-            sessionStorage.removeItem("uid");
-            this.props.history.push("/");
-          }
-        } else {
-          alert("로그아웃 실패");
-        }
-      })
-      //에러
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -135,9 +121,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <button onClick={this.logout} variant="primary" type="button">
-            로그아웃
-          </button>
+          <Navigation/>
           <section style={style}>
             <Board
               squares={current.squares}
@@ -148,6 +132,12 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
+        </div>
+        <div>
+          <Carousel2 />
+        </div>
+        <div>
+          <Table2 />
         </div>
       </div>
     );
