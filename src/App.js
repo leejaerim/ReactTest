@@ -4,7 +4,7 @@ import LoginForm from './LoginForm';
 import JoinForm from './JoinForm';
 import Game from './game';
 import Header from './header';
-
+import Magpie from './Magpie';
 class App extends Component {
     render() {
         return (
@@ -13,6 +13,7 @@ class App extends Component {
                 <Route path="/login" component={LoginForm} />
                 <Route path="/join" component={JoinForm} />
                 <Route path="/game" component={Game} />
+                <Route path="/magpie" component={Magpie}/>
             </div>
         );   
     }
