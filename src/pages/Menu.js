@@ -19,7 +19,7 @@ function Menu(props){
   return(
     <div>
         <Alert onClick={()=>onDecrease()}>
-        This is a {props.mName} : {props.cnt}
+          {props.mName} : {props.cnt}
         </Alert>
         <Button variant="primary" size="lg" onClick={()=>onIncrease()} style={{display:'inline'}}>
             {props.mName}
