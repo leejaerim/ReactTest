@@ -2,51 +2,38 @@ import React , { useState }from 'react';
 import { Button,ListGroup} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
-import ListContent from './ListContent.js';
-import { MenuList } from './MenuList';
+import Menu from './Menu.js';
+import { useLocation } from 'react-router-dom';
 function Table(){
     var [cost, setCost] = useState(0);
+    var [cnt,setCnt] = useState([0,0,0,0]);
     //const addCost = (val) => setCost(cost=cost+val);
-    const onIncrease = (v) => {
-        setCost(cost + v.cost);
-        v.cnt = v.cnt + 1;
-      }
-    
-      const onDecrease = (v) => {
-        setCost(cost - v.cost);
-        v.cnt = v.cnt - 1;
-      }
+    const onCount = () => {
+        setCost(0);
+        setCnt([0,0,0,0]);
+    }
+    const onUpdateCost = (val) => {
+        setCost(cost+val);
+    };
+    const onUpdateCnt= (index,val) =>{
+        cnt[index] = cnt[index]+val;
+        setCnt(cnt)
+    }
     return(
         <span>
             <ListGroup defaultActiveKey="#link1" style={{width : '400px'}}>
-                {MenuList.map((item, index) => {
-                    return (
-                    <li key={index} className={item.cName}>
-                        <ListGroup.Item action onClick={()=>onDecrease(item)}>
-                            {item.title}&nbsp;&nbsp;&nbsp;&nbsp;{item.cnt}
-                        </ListGroup.Item>
-                    </li>
-                    );
-            })}
+                <Menu mName={'김치찌개'} index={0} cnt={cnt[0]} onUpdateCost={onUpdateCost} onUpdateCnt={onUpdateCnt}cost={8000}/>
+                <Menu mName={'계란말이'} index={1} cnt={cnt[1]} onUpdateCost={onUpdateCost} onUpdateCnt={onUpdateCnt} cost={5000}/>
+                <Menu mName={'추가'} index={2} cnt={cnt[2]} onUpdateCost={onUpdateCost} onUpdateCnt={onUpdateCnt} cost={1000}/>
+                <Menu mName={'소주/맥주'} index={3} cnt={cnt[3]} onUpdateCost={onUpdateCost} onUpdateCnt={onUpdateCnt} cost={4000}/>
             </ListGroup>
-            <ul className="d-grid gap-2">
-                {MenuList.map((item, index) => {
-                    return (
-                    <li key={index} className={item.cName}>
-                        <Button variant="primary" size="lg" onClick={()=>onIncrease(item)} style={{display:'inline'}}>
-                            {item.title}
-                        </Button>
-                    </li>
-                    );
-                })}
-            </ul>
             <div>
-                <Button variant="primary" size="lg" onClick={() => setCost(0)}>
-                            계산
-                </Button>
                 <Alert variant='primary'>
                     총액 : {cost}
                 </Alert>
+                <Button variant="primary" size="lg" onClick={() => onCount()}>
+                            계산
+                </Button>
             </div>
         </span>
     );

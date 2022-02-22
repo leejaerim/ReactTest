@@ -5,7 +5,7 @@ import JoinForm from './JoinForm';
 import Game from './game';
 import Header from './header';
 import Magpie from './Magpie';
-import Table from './pages/table.js';
+import Home from './pages/Home.js';
 class App extends Component {
     render() {
         return (
@@ -15,7 +15,7 @@ class App extends Component {
                 <Route path="/join" component={JoinForm} />
                 <Route path="/game" component={Game} />
                 <Route path="/magpie" component={Magpie}/>
-                <Route path="/Table" component={Table}/>
+                <Route path="/Home" component={Home}/>
             </div>
         );   
     }
