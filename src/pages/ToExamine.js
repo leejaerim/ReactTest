@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Table from './table.js';
 function ToExamine(){
     return(
         <div className="toexamine">
-            <h1>ToExamine</h1>
+             <Table>
+            </Table>
         </div>
     );
 }

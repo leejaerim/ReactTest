@@ -24,6 +24,7 @@ function Menu(props){
         <Button variant="primary" size="lg" onClick={()=>onIncrease()} style={{display:'inline'}}>
             {props.mName}
         </Button>
+        <ul></ul>
     </div>
   );
 }

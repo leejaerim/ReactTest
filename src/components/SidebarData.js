@@ -2,22 +2,22 @@ import React from 'react';
 //import {BsPersonBoundingBox} from 'react-icons';
 export const SidebarData = [
   {
-    title: '검사하기',
+    title: '1번 테이블',
     path: '/ToExamine',
     cName: 'nav-text'
   },
   {
-    title: 'Home1',
+    title: '2번 테이블',
     path: '/Home',
     cName: 'nav-text'
   },
   {
-    title: 'About',
+    title: '3번 테이블',
     path: '/About',
     cName: 'nav-text'
   },
   {
-    title: 'Contact Us',
+    title: '4번 테이블',
     path: '/Contact',
     cName: 'nav-text'
   }
