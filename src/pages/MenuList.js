@@ -20,6 +20,12 @@ export const MenuList = [
     cnt : 0
   },
   {
+    title: '음료수',
+    cost: 2000,
+    cName: 'menu-text',
+    cnt : 0
+  },
+  {
     title: '소주/맥주',
     cost: 4000,
     cName: 'menu-text',

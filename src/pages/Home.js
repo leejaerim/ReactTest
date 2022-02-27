@@ -13,7 +13,7 @@ function Home(){
     };
     
     return(
-        <div className="d-grid gap-2">
+        <div className="d-grid gap-2" style={{height:'100%'}}>
                 <Table num={1} index={index} onUpdateIndex={onUpdateIndex} onUpdateSum={onUpdateSum}>
                 </Table>
                 <Table num={2} index={index} onUpdateIndex={onUpdateIndex} onUpdateSum={onUpdateSum}>
@@ -27,7 +27,7 @@ function Home(){
                         <Button variant="primary" size="lg" onClick={()=>{setIndex(1)}}>
                             1번 테이블
                         </Button>
-                        <Button style={{marginLeft : '100px'}} variant="primary" size="lg" onClick={()=>{setIndex(2)}}>
+                        <Button style={{marginLeft : '15%'}} variant="primary" size="lg" onClick={()=>{setIndex(2)}}>
                             2번 테이블
                         </Button>
                     </ul>
@@ -35,11 +35,11 @@ function Home(){
                         <Button variant="primary" size="lg" onClick={()=>{setIndex(3)}}>
                             3번 테이블
                         </Button>
-                        <Button style={{marginLeft : '100px'}} variant="primary" size="lg" onClick={()=>{setIndex(4)}}>
+                        <Button style={{marginLeft : '15%'}} variant="primary" size="lg" onClick={()=>{setIndex(4)}}>
                             4번 테이블
                         </Button>
                     </ul>
-                    <Alert variant='primary' style={{width : '363px', marginLeft:'32px'}}>
+                    <Alert variant='primary' style={{width : '62%', marginLeft:'6%'}}>
                         총액 : {sumCost}
                     </Alert>
                 </div>
