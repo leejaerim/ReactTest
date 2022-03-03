@@ -9,7 +9,7 @@ function Home(){
         setIndex(val);
     };
     const onUpdateSum = (val) => {
-        setSumCost(sumCost+val);
+        setSumCost(val);
     };
     
     return(
@@ -42,8 +42,7 @@ function Home(){
                     <Alert variant='primary' style={{width : '62%', marginLeft:'6%'}}>
                         총액 : {sumCost}
                     </Alert>
-                </div>
-                
+                </div>  
       </div>
     );
 }

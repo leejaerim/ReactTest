@@ -5,6 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import Menu from './Menu.js';
 import { useLocation } from 'react-router-dom';
 import './table.css';
+import axios from "axios";
 import { propTypes } from 'react-bootstrap/esm/Image';
 function Table(props){
     var [cost, setCost] = useState(0);
@@ -13,9 +14,28 @@ function Table(props){
     const showSidebar = () => setSidebar(!sidebar);
     //const addCost = (val) => setCost(cost=cost+val);
     const onCount = () => {
-        setCost(0);
-        setCnt([0,0,0,0,0]);
-        props.onUpdateSum(cost);
+        if(cost == 0) return ;
+        axios.post("http://localhost:8000/app/order/", {
+            cost : cost,
+        })
+      //정상 수행
+      .then(Response => {
+        if (Response.status === 201 || Response.status === 200){
+          if(Response.data.status === 'Success') {
+            setCost(0);
+            setCnt([0,0,0,0,0]);
+            props.onUpdateSum(Response.data.cost);
+          }else{
+            alert(Response.data.Error)
+          }
+        } else {
+          alert("데이터 삽입 실패");
+        }
+      })
+      //에러
+      .catch(err => {
+        console.log(err);
+      });
     }
     const onUpdateCost = (val) => {
         setCost(cost+val);
