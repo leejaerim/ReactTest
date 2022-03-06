@@ -14,28 +14,31 @@ function Table(props){
     const showSidebar = () => setSidebar(!sidebar);
     //const addCost = (val) => setCost(cost=cost+val);
     const onCount = () => {
-        if(cost == 0) return ;
-        axios.post("http://localhost:8000/app/order/", {
-            cost : cost,
-        })
-      //정상 수행
-      .then(Response => {
-        if (Response.status === 201 || Response.status === 200){
-          if(Response.data.status === 'Success') {
-            setCost(0);
-            setCnt([0,0,0,0,0]);
-            props.onUpdateSum(Response.data.cost);
-          }else{
-            alert(Response.data.Error)
-          }
-        } else {
-          alert("데이터 삽입 실패");
-        }
-      })
-      //에러
-      .catch(err => {
-        console.log(err);
-      });
+      //   if(cost == 0) return ;
+      //   axios.post("http://localhost:8000/app/order/", {
+      //       cost : cost,
+      //   })
+      // //정상 수행
+      // .then(Response => {
+      //   if (Response.status === 201 || Response.status === 200){
+      //     if(Response.data.status === 'Success') {
+      //       setCost(0);
+      //       setCnt([0,0,0,0,0]);
+      //       props.onUpdateSum(Response.data.cost);
+      //     }else{
+      //       alert(Response.data.Error)
+      //     }
+      //   } else {
+      //     alert("데이터 삽입 실패");
+      //   }
+      // })
+      // //에러
+      // .catch(err => {
+      //   console.log(err);
+      // });
+      setCost(0);
+      setCnt([0,0,0,0,0]);
+      props.onUpdateSum(cost);
     }
     const onUpdateCost = (val) => {
         setCost(cost+val);

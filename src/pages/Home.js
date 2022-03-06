@@ -9,7 +9,8 @@ function Home(){
         setIndex(val);
     };
     const onUpdateSum = (val) => {
-        setSumCost(val);
+        //setSumCost(val);
+        setSumCost(sumCost+val);
     };
     
     return(
