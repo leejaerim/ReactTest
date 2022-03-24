@@ -134,9 +134,6 @@ class Game extends React.Component {
           <ol>{moves}</ol>
         </div>
         <div>
-          <Carousel2 />
-        </div>
-        <div>
           <Table2 />
         </div>
       </div>
