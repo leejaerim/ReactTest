@@ -1,6 +1,8 @@
 import React , { useState }from 'react';
 import {ListGroup} from 'react-bootstrap';
 import './lnb.css';
+import { Link } from 'react-router-dom';
+
 function Lnb(){
     const [sidebar, setSidebar] = useState(false);
     const style ={
@@ -18,7 +20,11 @@ function Lnb(){
                 onMouseOut={()=>setSidebar(false)}
             >
                 <ListGroup>
-                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                    <ListGroup.Item>
+                        <Link to={"/"}>
+                            홈으로
+                        </Link>
+                    </ListGroup.Item>
                     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
                     <ListGroup.Item>Morbi leo risus</ListGroup.Item>
                     <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>

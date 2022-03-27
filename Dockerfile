@@ -14,7 +14,7 @@ RUN npm install
 RUN npm install react-scripts@3.0.1 -g
 RUN npm install git
 RUN npm install axios
-
+RUN npm install @mui/material @emotion/react @emotion/styled
 
 # 앱 실행
 CMD ["npm", "start"]

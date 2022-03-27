@@ -11,7 +11,6 @@ function Navigation(){
         .then((Response) => {
           if (Response.status === 201 || Response.status === 200) {
             if (Response.data.status === "Success") {
-              debugger;
               sessionStorage.removeItem("uid");
               //history.push('/signup')
               window.location.href='/';
@@ -40,13 +39,6 @@ function Navigation(){
                 {
                   sessionStorage.getItem("uid") !== null? null : <Nav.Link onClick={() => window.location.href='/Join'}>Join</Nav.Link>
                 }
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/magpie">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
               </Nav>
             </Navbar.Collapse>
           </Container>

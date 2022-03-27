@@ -11,7 +11,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
-var style = {
+ var style = {
   backgroundImage:
     "url(" + "https://media.giphy.com/media/02P36zcZT7NOufHIMo/giphy.gif" + ")",
   width: "10%",
