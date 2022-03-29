@@ -15,6 +15,7 @@ RUN npm install react-scripts@3.0.1 -g
 RUN npm install git
 RUN npm install axios
 RUN npm install @mui/material @emotion/react @emotion/styled
+RUN npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
 
 # 앱 실행
 CMD ["npm", "start"]

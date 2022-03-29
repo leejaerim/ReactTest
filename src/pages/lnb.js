@@ -25,7 +25,7 @@ function Lnb(){
                             홈으로
                         </Link>
                     </ListGroup.Item>
-                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+                    <ListGroup.Item><Link to={"/writecontent"}>글쓰기</Link></ListGroup.Item>
                     <ListGroup.Item>Morbi leo risus</ListGroup.Item>
                     <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
                     <ListGroup.Item>Vestibulum at eros</ListGroup.Item>

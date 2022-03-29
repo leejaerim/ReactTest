@@ -6,6 +6,8 @@ import Board from './pages/Board';
 import Header from './header';
 import Magpie from './Magpie';
 import Home from './pages/Home.js';
+import WriteContent from './pages/WriteContent.js';
+
 class App extends Component {
     render() {
         return (
@@ -16,6 +18,7 @@ class App extends Component {
                 <Route path="/game" component={Board} />
                 <Route path="/magpie" component={Magpie}/>
                 <Route path="/Home" component={Home}/>
+                <Route path="/writecontent" component={WriteContent}/>
             </div>
         );   
     }
