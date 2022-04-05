@@ -1,46 +1,71 @@
-import {Table} from "react-bootstrap";
-import React , { useState }from 'react';
+import React , { useState, useEffect  }from 'react';
+import { DataGrid } from '@mui/x-data-grid';
 import Navigation from '../navi';
 import Lnb from './lnb.js';
-import Drawer_lnb from './drawer.js';
-import { findByLabelText } from "@testing-library/react";
-function Board(){
-    return(
-        <div>
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'csrftoken';
+
+
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'author', headerName: 'Author', width: 130 },
+  { field: 'title', headerName: 'Title', width: 130 },
+  {
+    field: 'text',
+    headerName: 'Text',
+    width: 500,
+  },
+  {
+    field: 'create_at',
+    headerName: 'Create_Time',
+    description: 'The time when post was created.',
+    type:'number'
+  },
+];
+export default function DataTable() {
+    function getData() {
+        const res = [];
+        if(sessionStorage.getItem("uid") == null) {
+            return <Redirect to="/" />;
+        }else{
+            axios.get("http://localhost:8000/app/post/")
+            //정상 수행
+            .then(Response => {
+              if (Response.status === 201 || Response.status === 200){
+                for(let i=0; i<Response.data.items.length;i++){
+                    Response.data.items[i].fields.id = Response.data.items[i].pk
+                    res.push(Response.data.items[i].fields)
+                }
+                setRows(res);
+              } else {
+                alert("글쓰기 실패");
+              }
+            })
+            //에러
+            .catch(err => {
+              console.log(err);
+            });
+          }
+    }
+    const [rows, setRows] = useState([]);
+    useEffect(() => {
+        getData();
+      }, []); // rows가 바뀔 때만 effect를 재실행합니다.
+  return (
+    <div style={{ height: 400, width: '100%' }}>
             <Navigation/>
             <Lnb></Lnb>
-            {/* <Drawer_lnb/> */}
-            <Table striped bordered hover >
-                <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td colSpan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </Table>
-        </div>
-    );
+      <DataGrid style={{margin: '0px 0px 0px 10px'}}
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+      />
+    </div>
+  );
 }
-
-export default Board;

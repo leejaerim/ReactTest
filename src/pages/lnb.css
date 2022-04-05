@@ -1,5 +1,7 @@
 .open_lnb{
-    position:absolute
+    position:absolute;
+    z-index:2;
+    display:inline-block;
 }
 .close_lnb{
     display:none

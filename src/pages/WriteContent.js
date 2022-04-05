@@ -33,6 +33,8 @@ export default function WriteContent(){
               if (Response.status === 201 || Response.status === 200){
                 if(Response.data.status === 'Success') {
                   alert("글쓰기 성공");
+                  //document.location.href('/game');
+                  window.location.href='/game';
                 }else{
                   alert(Response.data.Error)
                 }
