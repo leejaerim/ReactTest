@@ -1,0 +1,13 @@
+.form-control {
+    display: inline-block;
+    width: 30%;
+    margin: 2% 0;
+}
+.Loginform{
+    text-align: left;
+    margin-top: 20%;
+    margin-left:50%
+}
+button {
+    display:block;
+}

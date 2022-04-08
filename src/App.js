@@ -7,6 +7,7 @@ import Header from './header';
 import Magpie from './Magpie';
 import Home from './pages/Home.js';
 import WriteContent from './pages/WriteContent.js';
+import ViewContent from './pages/ViewContent.js';
 
 class App extends Component {
     render() {
@@ -19,6 +20,7 @@ class App extends Component {
                 <Route path="/magpie" component={Magpie}/>
                 <Route path="/Home" component={Home}/>
                 <Route path="/writecontent" component={WriteContent}/>
+                <Route path="/viewcontent" component={ViewContent}/>
             </div>
         );   
     }

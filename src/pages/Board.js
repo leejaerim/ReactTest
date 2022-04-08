@@ -59,12 +59,19 @@ export default function DataTable() {
     <div style={{ height: 400, width: '100%' }}>
             <Navigation/>
             <Lnb></Lnb>
-      <DataGrid style={{margin: '0px 0px 0px 10px'}}
+      <DataGrid className="Grid"
+        style={{margin: '0px 0px 0px 10px'}}
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        onCellDoubleClick={(params, event) => {
+          debugger;
+          if (!event.ctrlKey) {
+            console.log(event.ctrlKey)
+          }
+        }}
       />
     </div>
   );

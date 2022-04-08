@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import "./LoginForm.css";
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -49,7 +50,7 @@ class LoginForm extends Component {
       return <Redirect to="/game" />;
     }
     return (
-      <Form>
+      <Form className="Loginform">
         <h1>로그인</h1>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -71,12 +72,14 @@ class LoginForm extends Component {
             placeholder="Password"
             onKeyPress={this.onKeyPress}
           />
+          <div>
           <Button onClick={this.login} variant="primary" type="button">
             로그인
           </Button>
           <Button onClick={this.home} variant="primary" type="button">
             홈으로
           </Button>
+          </div>
         </Form.Group>
         <br></br>
       </Form>

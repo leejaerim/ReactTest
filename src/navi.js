@@ -28,11 +28,11 @@ function Navigation(){
       <div className="Navigation"> 
         <Navbar bg="light" expand="lg">
             <Container>
-            <Navbar.Brand href="#home">Today I Learned</Navbar.Brand>
+            <Navbar.Brand href="/">Today I Learned</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="justify-content-end" style={{ width: "100%" }}>
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link >Home</Nav.Link>
                 {
                   sessionStorage.getItem("uid") !== null? <Nav.Link onClick={logout}>Logout</Nav.Link> : <Nav.Link onClick={() => window.location.href='/Login'}>Login</Nav.Link>
                 }
