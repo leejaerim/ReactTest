@@ -67,10 +67,12 @@ export default function DataTable() {
         rowsPerPageOptions={[5]}
         checkboxSelection
         onCellDoubleClick={(params, event) => {
-          debugger;
-          if (!event.ctrlKey) {
-            console.log(event.ctrlKey)
-          }
+          window.location.href = "/viewcontent/"+params.id;
+        }}
+        initialState={{
+          sorting: {
+            sortModel: [{ field: 'id', sort: 'desc' }],
+          },
         }}
       />
     </div>

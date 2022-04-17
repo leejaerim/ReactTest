@@ -20,7 +20,7 @@ class App extends Component {
                 <Route path="/magpie" component={Magpie}/>
                 <Route path="/Home" component={Home}/>
                 <Route path="/writecontent" component={WriteContent}/>
-                <Route path="/viewcontent" component={ViewContent}/>
+                <Route path="/viewcontent/:id" component={ViewContent}/>
             </div>
         );   
     }
