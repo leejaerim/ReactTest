@@ -12,10 +12,12 @@
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
     min-height: 500px;
 }
-
+h2{
+    display: inline-block;
+}
 #submit{
     display : block;
-    margin : 0px auto;
+    float : right;
     width: 100px;
     height: 40px;
 }

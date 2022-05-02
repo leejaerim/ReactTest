@@ -21,14 +21,13 @@ function Lnb(){
             >
                 <ListGroup>
                     <ListGroup.Item>
+                        <div id="home"></div>
                         <Link to={"/"}>
                             홈으로
                         </Link>
                     </ListGroup.Item>
-                    <ListGroup.Item><Link to={"/writecontent"}>글쓰기</Link></ListGroup.Item>
-                    <ListGroup.Item><Link to={"/game"}>목록</Link></ListGroup.Item>
-                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                    <ListGroup.Item><div id="write"></div><Link to={"/writecontent"}>글쓰기</Link></ListGroup.Item>
+                    <ListGroup.Item><div id="list"></div><Link to={"/game"}>목록</Link></ListGroup.Item>
                 </ListGroup>
             </div>
         </div>

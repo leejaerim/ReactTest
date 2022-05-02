@@ -16,18 +16,17 @@ export default function ViewContent({match}){
         if(sessionStorage.getItem("uid") == null) {
             return <Redirect to="/" />;
         }else{
-            axios.get("http://localhost:8000/app/post/")
+            axios.get("http://localhost:8000/app/post/"+id)
             //정상 수행
             .then(Response => {
               if (Response.status === 201 || Response.status === 200){
                 for(let i=0; i<Response.data.items.length;i++){
                     Response.data.items[i].fields.id = Response.data.items[i].pk;
                     res = Response.data.items[i].fields;
-                    debugger;
                 }
                 setRows(res);
               } else {
-                alert("글쓰기 실패");
+                alert("데이터를 읽어오는데 실패하였습니다.");
               }
             })
             //에러
@@ -46,15 +45,19 @@ export default function ViewContent({match}){
             <Lnb></Lnb>
             <div className='ContentWrapper' style={{marginLeft:"10px"}}>
                 <main>
+                    <div>
                         <h2> {rows.title}</h2>
+                        <Link to="/game" className="menu-bars">
+                            <Button id="submit" className="submit" variant="contained" >뒤로</Button>
+                        </Link>
+                    </div>
                         <div style={{height:"500px", border:"1px solid #333333"}}>
-                            {rows.text}
+                            <div dangerouslySetInnerHTML={ {__html: rows.text} }>
+                            </div>
                         </div>
                 </main>
             </div>
-            <Link to="/game" className="menu-bars">
-                <Button id="submit" className="submit" variant="contained" style={{marginTop:"10px"}}>뒤로</Button>
-            </Link>
+            
             
         </div>
     );

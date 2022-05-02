@@ -15,11 +15,6 @@ const columns = [
   { field: 'author', headerName: 'Author', width: 130 },
   { field: 'title', headerName: 'Title', width: 130 },
   {
-    field: 'text',
-    headerName: 'Text',
-    width: 500,
-  },
-  {
     field: 'create_at',
     headerName: 'Create_Time',
     description: 'The time when post was created.',

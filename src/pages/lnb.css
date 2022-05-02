@@ -6,3 +6,25 @@
 .close_lnb{
     display:none
 }
+#home{
+    background: url(./../img/free-icon-house-3884324.png);
+    width: 24px;
+    height: 24px;
+    background-size:contain;
+    margin-right: 5px;
+    display:inline-block;
+}
+#write{
+    background: url(./../img/free-icon-content-marketing-2658259.png);
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    display:inline-block;
+}
+#list{
+    background: url(./../img/free-icon-browser-2658298.png);
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    display:inline-block;
+}

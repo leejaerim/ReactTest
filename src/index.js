@@ -10,7 +10,3 @@ ReactDOM.render(
         </BrowserRouter>,
     document.querySelector('#root')
 );
-//<Link to="/about">소개</Link>
-
-//<button><Link to= '/' className="links">Home</Link></button>
-//<button><Link to= '/Login' className="links">로그인</Link></button>
